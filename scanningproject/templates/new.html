@@ -1,0 +1,29 @@
+{% extends 'hm.html' %}
+{% block content %}
+<br><br>
+<div style="margin: auto; width:50%">
+  <h1>Upload your image below</h1>
+  <div class="col-auto"><br>
+    <form class="row row-cols-lg-auto g-3 align-items-center" method="post" enctype="multipart/form-data">
+      <!-- <label for="">Image uploads here</label>
+      <input type="file" class="form-control" id='stimg' name="stimge" value=""> -->
+      {% csrf_token %}
+      {{ form.as_p}}
+
+  
+      <!-- <button type="submit" name="button" class='btn btn-primary'><a href ="{% url 'downloader' %}">Submit</a></button> -->
+      
+        <br>
+        <br>
+      <button type="submit" name="button" class='btn btn-primary'>Upload  <i class="bi bi-upload"></i></button>
+      
+    </form>
+    </div>
+    <span class="textarea" role="textbox" contenteditable>{{text}}</span>
+
+    <p>{{messg}}</p>
+    <p>{{messgr}}</p>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'hm.html' %}
+{% block content %}
+<div style="margin: auto; width:50%">
+<h2>Your Document is ready for download</h2>
+<div class="mb-3">
+  <!-- <label for="exampleFormControlTextarea1" class="form-label">Copy text</label> -->
+  <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"> {{text}}</textarea> -->
+</div>
+<button class="btn btn-primary" type="button" ><a href ="{% url 'pdfdownloader' %}" style="color:white;">Download word document here</a>
+</button>
+
+{% if user.is_authenticated%}
+<button class="btn btn-primary" type="button" ><a href ="" style="color:white;">Save Image/pdf</a>
+</button>
+{% endif %}
+<!-- <button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <span class="visually-hidden">Loading...</span>
+</button> -->
+
+</div>
+{% endblock %}

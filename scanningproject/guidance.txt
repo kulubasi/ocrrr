@@ -1,0 +1,35 @@
+Here is the key piece of python that does the OCRing of pdf files: 
+
+# Additional processing
+        document_path = Path(str(document.attachment_file))
+
+        if document_path.ext == '.pdf':
+            working_path = Path('temp', document.directory)
+            working_path.mkdir(parents=True)
+
+            input_path = Path(working_path, name)
+            input_path.write_file(document.attachment_file.read(), 'w')
+
+            rb = ReadBot()
+
+            args = [
+                'VBEZ',
+                # '-sDEVICE=tiffg4',
+                '-sDEVICE=pnggray',
+                '-dNOPAUSE',
+                '-r600x600',
+                '-sOutputFile=' + str(working_path) + '/page-%00d.png',
+                str(input_path)
+            ]
+
+            ghostscript.Ghostscript(*args)
+            image_paths = working_path.listdir(pattern='*.png')
+            txt = ''
+
+            for image_path in image_paths:
+                ocrtext = rb.interpret(str(image_path))
+                txt = txt + ocrtext
+
+            document.notes = txt
+            document.save()
+            working_path.rmtree()

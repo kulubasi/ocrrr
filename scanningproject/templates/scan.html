@@ -1,0 +1,15 @@
+{% extends 'hm.html' %}
+{% block content %}
+<br><br>
+  <h1>Image is being scanned .....</h1>
+    <form class="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p}}
+      {{text}}
+
+      <button type="submit" name="button" class='btn btn-primary'>Upload your image</button>
+    </form>
+    <p>{{imge}}</p>
+    {{k}}
+    {{h}}
+{% endblock %}

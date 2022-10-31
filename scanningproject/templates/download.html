@@ -1,0 +1,20 @@
+{% extends 'hm.html' %}
+{% block content %}
+<br><br>
+  <h1>Your document is ready for downloading</h1>
+    <!-- <form class="" method="post" enctype="multipart/form-data"> -->
+       <!-- <label for="">Image uploads here</label>
+      <input type="file" class="form-control" id='stimg' name="stimge" value=""> -->
+      {% csrf_token %}
+      {{ form.as_p}}
+
+      <!-- <button type="submit" name="button" class='btn btn-primary'><a href="{% url 'scan' %}">Upload your image</a></button> -->
+      <!-- <button type="submit" name="button" class='btn btn-primary'>Submit</button>
+    </form> -->
+     <span class="textarea" role="textbox" contenteditable>{{text}}</span>
+
+
+    <p>{{messg}}</p>
+    <p>{{messgr}}</p>
+
+{% endblock %}
